@@ -129,13 +129,13 @@ lib
     └── location_parser.rb
 ```
 
-### Software Design decisions overview
+### Software design decisions
 
 
 
 
 
-If you want to have a deep understanding of the business logic implemented, please follow [this link](https://github.com/giamir/mars_rover/tree/master/test/unit) where all tests cases are located.
+If you want to have a deep understanding of the business logic implemented, please follow [this link](https://github.com/giamir/mars_rover/tree/master/test) where all tests cases are located.
 
 
 ```
