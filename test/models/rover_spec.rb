@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'rover'
+require 'models/rover'
 
 describe Rover do
   let(:plateau_mock) { double :plateau, contains?: true }

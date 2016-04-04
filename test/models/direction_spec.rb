@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'direction'
+require 'models/direction'
 
 describe Direction do
   let(:north) { described_class.new('N') }

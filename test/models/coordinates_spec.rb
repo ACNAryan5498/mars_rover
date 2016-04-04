@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'coordinates'
+require 'models/coordinates'
 
 describe Coordinates do
   subject(:coordinates) { described_class.new(1, 1) }

@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'plateau'
+require 'models/plateau'
 
 describe Plateau do
   let(:coords) { double :coordinates }
