@@ -1,14 +1,13 @@
 Dir[__dir__ + '/lib/parsers/*.rb'].each { |file| require file }
-Dir[__dir__ + '/lib/models/*.rb'].each { |file| require file }
+Dir[__dir__ + '/lib/models/*.rb'].each  { |file| require file }
 
 class App
   def run
     puts "MARS ROVER APP\nInsert input (type ctrl-d when you have done):\n"
-    input = []
-    STDIN.read.each_line { |line| input << line.delete("\n") }
-    plateau = generate_plateau(input.shift)
+    lines = STDIN.read.split("\n")
+    plateau = generate_plateau(lines.shift)
     puts "\n\nOutput:\n"
-    output(input, plateau) until input.empty?
+    output(lines, plateau) until lines.empty?
   end
 
   private
@@ -18,9 +17,9 @@ class App
     Plateau.new(parser.coordinates.first, parser.coordinates.last)
   end
 
-  def output(input, plateau)
-    rover = deploy_rover(plateau, input.shift)
-    instruct_rover(rover, input.shift)
+  def output(lines, plateau)
+    rover = deploy_rover(plateau, lines.shift)
+    instruct_rover(rover, lines.shift)
     print_rover_location(rover)
   end
 

@@ -1,4 +1,4 @@
-# Mars Rover [![Build Status](https://travis-ci.org/giamir/mars_rover.svg?branch=master)](https://travis-ci.org/giamir/mars_rover)
+# Mars Rover [![Build Status](https://travis-ci.org/giamir/mars_rover.svg?branch=master)](https://travis-ci.org/giamir/mars_rover) [![Coverage Status](https://coveralls.io/repos/github/giamir/mars_rover/badge.svg?branch=master)](https://coveralls.io/github/giamir/mars_rover?branch=master)
 
 
 A squad of robotic rovers are to be landed by NASA on a plateau on Mars. This plateau, which is curiously rectangular, must be navigated by the rovers so that their on-board cameras can get a complete view of the surrounding terrain to send back to Earth.
@@ -128,12 +128,6 @@ lib
     ├── coordinates_parser.rb
     └── location_parser.rb
 ```
-
-### Software design decisions
-
-
-
-
 
 If you want to have a deep understanding of the business logic implemented, please follow [this link](https://github.com/giamir/mars_rover/tree/master/test) where all tests cases are located.
 
