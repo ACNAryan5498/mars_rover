@@ -1,44 +1,5 @@
 # Mars Rover [![Build Status](https://travis-ci.org/giamir/mars_rover.svg?branch=master)](https://travis-ci.org/giamir/mars_rover) [![Coverage Status](https://coveralls.io/repos/github/giamir/mars_rover/badge.svg?branch=master)](https://coveralls.io/github/giamir/mars_rover?branch=master)
 
-
-A squad of robotic rovers are to be landed by NASA on a plateau on Mars. This plateau, which is curiously rectangular, must be navigated by the rovers so that their on-board cameras can get a complete view of the surrounding terrain to send back to Earth.
-
-A rover’s position and location is represented by a combination of x and y co-ordinates and a letter representing one of the four cardinal compass points. The plateau is divided up into a grid to simplify navigation. An example position might be 0, 0, N, which means the rover is in the bottom left corner and facing North.
-
-In order to control a rover, NASA sends a simple string of letters. The possible letters are 'L', 'R' and 'M'. 'L' and 'R' makes the rover spin 90 degrees left or right respectively, without moving from its current spot. 'M' means move forward one grid point, and maintain the same heading.
-
-Assume that the square directly North from (x, y) is (x, y+1).
-
-
-**Input:**
-
-* The first line of input is the upper-right coordinates of the plateau, the lower-left coordinates are assumed to be 0,0.
-
-* The rest of the input is information pertaining to the rovers that have been deployed. Each rover has two lines of input. The first line gives the rover’s position, and the second line is a series of instructions telling the rover how to explore the plateau.
-
-* The position is made up of two integers and a letter separated by spaces, corresponding to the x and y co-ordinates and the rover’s orientation.
-
-* Each rover will be finished sequentially, which means that the second rover won’t start to move until the first one has finished moving.
-
-
-**Output:**
-
-* The output for each rover should be its final co-ordinates and heading.
-
-Test Input:
-```
-5 5
-1 2 N
-LMLMLMLMM
-3 3 E
-MMRMMRMRRM
-```
-Expected Output:
-```
-1 3 N
-5 1 E
-```
-
 ## Installation instructions
 
 Clone from github and move into directory
@@ -101,7 +62,23 @@ $ rspec test/commands
 $ rspec test/parsers
 ```
 
+To run the test suite and displays coverage statistics
+
+```
+$ coveralls report
+```
+
 ## Solution description
+
+### Approach
+
+I followed a TDD methodology to implement the business logic. I wrote a failing unit test in RSpec, then wrote code to fix it and finally spent quite a long time refactoring.
+
+I used the Command Design Pattern to store the information necessary to call rover methods at a future time.
+
+The App class in the root file app.rb is responsible for getting the user input and printing the output on the CLI.
+I focused more on the models rather than the UI. The UI could be refactored in future. For example extracting a UserInterface class and using dependency injection to inject it into the main App class.
+
 
 ### General assumptions
 
@@ -131,6 +108,45 @@ lib
 
 If you want to have a deep understanding of the business logic implemented, please follow [this link](https://github.com/giamir/mars_rover/tree/master/test) where all tests cases are located.
 
+## Problem
+
+A squad of robotic rovers are to be landed by NASA on a plateau on Mars. This plateau, which is curiously rectangular, must be navigated by the rovers so that their on-board cameras can get a complete view of the surrounding terrain to send back to Earth.
+
+A rover’s position and location is represented by a combination of x and y co-ordinates and a letter representing one of the four cardinal compass points. The plateau is divided up into a grid to simplify navigation. An example position might be 0, 0, N, which means the rover is in the bottom left corner and facing North.
+
+In order to control a rover, NASA sends a simple string of letters. The possible letters are 'L', 'R' and 'M'. 'L' and 'R' makes the rover spin 90 degrees left or right respectively, without moving from its current spot. 'M' means move forward one grid point, and maintain the same heading.
+
+Assume that the square directly North from (x, y) is (x, y+1).
+
+
+**Input:**
+
+* The first line of input is the upper-right coordinates of the plateau, the lower-left coordinates are assumed to be 0,0.
+
+* The rest of the input is information pertaining to the rovers that have been deployed. Each rover has two lines of input. The first line gives the rover’s position, and the second line is a series of instructions telling the rover how to explore the plateau.
+
+* The position is made up of two integers and a letter separated by spaces, corresponding to the x and y co-ordinates and the rover’s orientation.
+
+* Each rover will be finished sequentially, which means that the second rover won’t start to move until the first one has finished moving.
+
+
+**Output:**
+
+* The output for each rover should be its final co-ordinates and heading.
+
+Test Input:
+```
+5 5
+1 2 N
+LMLMLMLMM
+3 3 E
+MMRMMRMRRM
+```
+Expected Output:
+```
+1 3 N
+5 1 E
+```
 
 ```
                          ;iiiiiiiiiiiiiiiiiiiii;                           

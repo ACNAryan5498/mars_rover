@@ -1,3 +1,5 @@
+require 'strscan'
+
 class CoordinatesParser
   def initialize(string = '')
     @buffer = StringScanner.new(string)

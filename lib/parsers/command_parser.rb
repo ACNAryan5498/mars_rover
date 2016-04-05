@@ -1,5 +1,6 @@
 Dir[File.expand_path('..', __dir__) + '/commands/*.rb']
   .each { |file| require file }
+require 'strscan'
 
 class CommandParser
   CMD_KEYS = {
