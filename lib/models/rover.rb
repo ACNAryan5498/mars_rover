@@ -7,22 +7,26 @@ class Rover
   end
 
   def turn_left
-    @current_direction = @current_direction.left
+    @current_direction = current_direction.left
   end
 
   def turn_right
-    @current_direction = @current_direction.right
+    @current_direction = current_direction.right
   end
 
   def move
-    coords_after_move = @current_coords.next_coordinates(
-      @current_direction.step_for_x_axis,
-      @current_direction.step_for_y_axis
+    coords_after_move = current_coords.next_coordinates(
+      current_direction.step_for_x_axis,
+      current_direction.step_for_y_axis
     )
-    @current_coords = coords_after_move if @plateau.contains?(coords_after_move)
+    @current_coords = coords_after_move if plateau.contains?(coords_after_move)
   end
 
   def current_location
-    "#{@current_coords} #{@current_direction}"
+    "#{current_coords} #{current_direction}"
   end
+
+  private
+
+  attr_reader :plateau, :current_coords, :current_direction
 end

@@ -5,7 +5,11 @@ class Plateau
   end
 
   def contains?(coords)
-    @bottom_left_coords.outside_limit?(coords) &&
-      @top_right_coords.within_limit?(coords)
+    bottom_left_coords.outside_limit?(coords) &&
+      top_right_coords.within_limit?(coords)
   end
+
+  private
+
+  attr_reader :bottom_left_coords, :top_right_coords
 end

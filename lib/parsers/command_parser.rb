@@ -16,17 +16,19 @@ class CommandParser
   end
 
   def command_list
-    @cmd_list.dup
+    cmd_list.dup
   end
 
   private
 
+  attr_reader :buffer, :cmd_list
+
   def parse
-    add_cmd_to_list(@buffer.getch.upcase) until @buffer.eos?
+    add_cmd_to_list(buffer.getch.upcase) until buffer.eos?
   end
 
   def add_cmd_to_list(char)
-    @cmd_list << CMD_KEYS[char.to_sym].new if valid_command_key?(char)
+    cmd_list << CMD_KEYS[char.to_sym].new if valid_command_key?(char)
   end
 
   def valid_command_key?(char)

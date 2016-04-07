@@ -7,7 +7,7 @@ class Coordinates
   end
 
   def next_coordinates(x_step_value, y_step_value)
-    Coordinates.new(@x + x_step_value, @y + y_step_value)
+    Coordinates.new(x + x_step_value, y + y_step_value)
   end
 
   def within_limit?(coords)
@@ -19,24 +19,24 @@ class Coordinates
   end
 
   def to_s
-    "#{@x} #{@y}"
+    "#{x} #{y}"
   end
 
   private
 
-  def x_within_limit?(x)
-    x <= @x
+  def x_within_limit?(x_coord)
+    x_coord <= x
   end
 
-  def y_within_limit?(y)
-    y <= @y
+  def y_within_limit?(y_coord)
+    y_coord <= y
   end
 
-  def x_outside_limit?(x)
-    x >= @x
+  def x_outside_limit?(x_coord)
+    x_coord >= x
   end
 
-  def y_outside_limit?(y)
-    y >= @y
+  def y_outside_limit?(y_coord)
+    y_coord >= y
   end
 end

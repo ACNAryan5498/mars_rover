@@ -11,22 +11,26 @@ class Direction
   end
 
   def left
-    Direction.new(DIR_KEYS[@dir_key][:left])
+    Direction.new(DIR_KEYS[dir_key][:left])
   end
 
   def right
-    Direction.new(DIR_KEYS[@dir_key][:right])
+    Direction.new(DIR_KEYS[dir_key][:right])
   end
 
   def step_for_x_axis
-    DIR_KEYS[@dir_key][:steps].first
+    DIR_KEYS[dir_key][:steps].first
   end
 
   def step_for_y_axis
-    DIR_KEYS[@dir_key][:steps].last
+    DIR_KEYS[dir_key][:steps].last
   end
 
   def to_s
-    @dir_key.to_s
+    dir_key.to_s
   end
+
+  private
+
+  attr_reader :dir_key
 end

@@ -9,28 +9,30 @@ class CoordinatesParser
 
   def coordinates
     raise 'Coordinates input not valid' unless valid_coords_length?
-    @coords.dup
+    coords.dup
   end
 
   private
 
+  attr_reader :buffer, :coords
+
   def parse
-    until @buffer.eos?
+    until buffer.eos?
       add_value_to_coords(find_next_digit_string)
       break if valid_coords_length?
     end
   end
 
   def find_next_digit_string
-    @buffer.skip_until(/\D+/) unless @buffer.peek(1) =~ /\d/
-    @buffer.scan(/\d+/)
+    buffer.skip_until(/\D+/) unless buffer.peek(1) =~ /\d/
+    buffer.scan(/\d+/)
   end
 
   def add_value_to_coords(digit_string)
-    @coords << digit_string.to_i if digit_string
+    coords << digit_string.to_i if digit_string
   end
 
   def valid_coords_length?
-    @coords.length == 2
+    coords.length == 2
   end
 end
